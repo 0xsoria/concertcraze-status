@@ -19,7 +19,7 @@ is not a service-level guarantee. No raw application data is fetched or publishe
 
 When `pi-monitor.json` enables it, this job also reads the public, minimal heartbeat
 from the separate `0xsoria/concertcraze-pi-heartbeat` repository. The Pi's dedicated
-deploy key only writes that heartbeat-only repository; it cannot edit this monitor,
+deploy key only writes that heartbeat-only repository, where Actions are disabled; it cannot edit this monitor,
 read Actions secrets, or access the private application repository. The heartbeat
 contains only timestamps and health/restore-result booleans. Each publication replaces
 the branch with a single parentless commit, avoiding a growing visible commit history.
