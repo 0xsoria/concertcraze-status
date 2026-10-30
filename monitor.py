@@ -38,7 +38,7 @@ def slack(text):
     parsed=urllib.parse.urlsplit(url)
     if parsed.scheme!='https' or parsed.hostname!='hooks.slack.com' or not parsed.path.startswith('/services/'):
         raise ValueError('slack_webhook_not_configured')
-    status,data=request(url,'POST',{'text':'ConcertCraze external monitoring',
+    status,data=request(url,'POST',{'text':text[:250].replace('&','&amp;').replace('<','&lt;').replace('>','&gt;'),
         'blocks':[{'type':'section','text':{'type':'plain_text','text':text}}]}, {'Content-Type':'application/json'})
     if status!=200 or data.strip()!=b'ok': raise RuntimeError('slack_delivery_failed')
 
