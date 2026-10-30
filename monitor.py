@@ -91,6 +91,12 @@ def main():
                  'content':base64.b64encode(json.dumps(value,indent=2).encode()).decode()}
         if previous: payload['sha']=previous['sha']
         api('/contents/status.json','PUT',payload)
+    import pi_monitor
+    def read_pi_heartbeat():
+        _,data=request('https://api.github.com/repos/0xsoria/concertcraze-pi-heartbeat/contents/pi-heartbeat.json',headers={
+            'Authorization':'Bearer '+os.environ['GITHUB_TOKEN'],'Accept':'application/vnd.github+json','User-Agent':'ConcertCraze-Availability/1.0'})
+        return json.loads(data)
+    pi_monitor.check(api,slack,now,heartbeat_reader=read_pi_heartbeat)
     print('External health check:', 'healthy' if healthy else 'incident active')
 
 
