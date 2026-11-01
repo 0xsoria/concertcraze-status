@@ -1,6 +1,6 @@
 {
-  "checked_at": "2026-10-31T12:42:18.320743+00:00",
-  "report_date": "2026-10-31",
+  "checked_at": "2026-11-01T09:32:19.244518+00:00",
+  "report_date": "2026-11-01",
   "healthy": true,
   "endpoint": "https://api.concertcraze.app/healthz"
 }
